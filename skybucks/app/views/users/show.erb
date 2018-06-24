@@ -1,4 +1,9 @@
-<p> Flights taken by <%= @user.username %></p>
+<p><h1> Flights taken by <%= @user.username %></h1></p>
+<p><h2> Select the points you would like to spend. </h2></p>
+<form method="post" action="/flights/<%=@flight.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
   <% @user.flights.each do |flight| %>
-<p><%= flight.origin %> to <%= flight.destination %>, <%= flight.point_value%> points.</p>
+<p><input type="checkbox"><%= flight.origin %> to <%= flight.destination %>, <%= flight.point_value%> points.</p>
+<input type="submit" value="Submit">
+</form>
 <% end %>
