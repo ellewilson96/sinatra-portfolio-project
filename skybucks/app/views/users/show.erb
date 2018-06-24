@@ -1,0 +1,4 @@
+<p> Flights taken by <%= @user.username %></p>
+  <% @user.flights.each do |flight| %>
+<p><%= flight.origin %> to <%= flight.destination %>, <%= flight.point_value%> points.</p>
+<% end %>
