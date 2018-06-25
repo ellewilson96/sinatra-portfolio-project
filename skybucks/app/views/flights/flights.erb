@@ -1,0 +1,8 @@
+<p> Welcome, <%= current_user.username %>
+<h2> Planned Flights </h2>
+
+<% @flights.each do |flight| %>
+  <div>
+    <%= flight %>
+  </div>
+<% end %>
