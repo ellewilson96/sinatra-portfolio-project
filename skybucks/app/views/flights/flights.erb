@@ -1,5 +1,5 @@
 <p> Welcome, <%= current_user.username %>. You have <%=@flights.count%>
-  <% if @flights.count = 1 %>
+  <% if @flights.count == 1 %>
   flight
   <% else %>
   flights
