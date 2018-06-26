@@ -1,4 +1,4 @@
-<p> Welcome, <%= current_user.username %>
+<p> Welcome, <%= current_user.username %>. You have <%=@flights.count%> flights scheduled.
 <h2> Planned Flights </h2>
 
 <% @flights.each do |flight| %>

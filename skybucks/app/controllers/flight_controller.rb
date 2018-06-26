@@ -30,7 +30,7 @@ class FlightController < ApplicationController
          end
        end
        else
-       redirect to '/login'
+       redirect to '/'
      end
    end
 
