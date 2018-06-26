@@ -68,7 +68,7 @@ class FlightController < ApplicationController
        else
          @flight = Flight.find_by_id(params[:id])
          if @flight && @flight.user == current_user
-           if @flight.update(origin: params[:origin], destination: params[:destination], user_id: params[:user_id])
+           if @flight.update(origin: params[:origin], destination: params[:destination])
              redirect to "/flights/#{@flight.id}"
            else
              redirect to "/flights/#{@flight.id}/edit"
