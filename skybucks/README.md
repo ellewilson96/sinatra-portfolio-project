@@ -1,8 +1,6 @@
 # Skybucks
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/skybucks`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to Skybucks! Users are able to sign up and sign in to track flights they have dreams of taking one day. The user can create a flight from a select list of airports that fly with Skybucks. The user can then edit or delete flights from the list, and finally log out if they are finished with the session.
 
 ## Installation
 
