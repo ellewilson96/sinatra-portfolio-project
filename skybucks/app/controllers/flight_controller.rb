@@ -17,13 +17,18 @@ class FlightController < ApplicationController
       end
     end
 
+    get '/flights/error' do
+      erb :'/flights/error'
+    end
+
     post '/flights' do
      if logged_in?
-       if params == ""
-         redirect to "/flights/new"
+       if params[:origin] == params[:destination]
+         redirect to "/flights/error"
        else
          @flight = current_user.flights.build(origin: params[:origin], destination: params[:destination], user_id: params[:user_id])
-          if @flight.save
+          if params[:origin] != params[:destination]
+            @flight.save
            redirect to "/flights/#{@flight.id}"
          else
            redirect to "/flights/new"
