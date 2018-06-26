@@ -2,7 +2,7 @@ class FlightController < ApplicationController
 
   get '/flights' do
   if logged_in?
-        @flights = Flight.all
+        @flights = current_user.flights.all
         erb :'flights/flights'
       else
         redirect to '/login'

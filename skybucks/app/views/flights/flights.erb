@@ -1,4 +1,10 @@
-<p> Welcome, <%= current_user.username %>. You have <%=@flights.count%> flights scheduled.
+<p> Welcome, <%= current_user.username %>. You have <%=@flights.count%>
+  <% if @flights.count = 1 %>
+  flight
+  <% else %>
+  flights
+  <% end %> scheduled.
+
 <h2> Planned Flights </h2>
 
 <% @flights.each do |flight| %>
