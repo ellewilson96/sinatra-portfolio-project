@@ -3,7 +3,7 @@ class FlightController < ApplicationController
   get '/flights' do
   if logged_in?
         @flights = Flight.all
-        erb :'flights/create_flight'
+        erb :'flights/flights'
       else
         redirect to '/login'
       end
@@ -63,7 +63,7 @@ class FlightController < ApplicationController
        else
          @flight = Flight.find_by_id(params[:id])
          if @flight && @flight.user == current_user
-           if @flight.update(params)
+           if @flight.update(origin: params[:origin], destination: params[:destination], user_id: params[:user_id])
              redirect to "/flights/#{@flight.id}"
            else
              redirect to "/flights/#{@flight.id}/edit"

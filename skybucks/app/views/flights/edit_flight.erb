@@ -1,9 +1,6 @@
-<h2> Edit Flight render :partial => "item", :locals => { : => @ }oute </h2>
-
-
+<h2>Select a new Route</h2><br>
 <form method="post" action="/flights/<%=@flight.id%>">
 <input id="hidden" type="hidden" name="_method" value="PATCH">
-<label>Select a new Route</label><br>
 Flight Origin:
 <select name="origin">
 <option value="JFK">New York City - JFK</option>

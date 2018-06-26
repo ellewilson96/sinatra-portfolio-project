@@ -1,8 +1,11 @@
-<p> Welcome, <%= current_user.username. %>
+<p> Welcome, <%= current_user.username %>
 <h2> Planned Flights </h2>
 
 <% @flights.each do |flight| %>
   <div>
-    <%= flight %>
+    <a href="/flights/<%=flight.id%>"><%= flight.origin %> to <%= flight.destination %></a>
   </div>
 <% end %>
+<br>
+<a href="/flights/new">Add</a> a new flight.<br>
+<a href="/logout">Log out of Skybucks Rewards.</a>
