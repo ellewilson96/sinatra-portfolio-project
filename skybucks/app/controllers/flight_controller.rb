@@ -1,8 +1,9 @@
 class FlightController < ApplicationController
 
+  get '/flights' do
   if logged_in?
         @flights = Flight.all
-        erb :'flights/flights'
+        erb :'flights/create_flight'
       else
         redirect to '/login'
       end
@@ -10,7 +11,7 @@ class FlightController < ApplicationController
 
     get '/flights/new' do
       if logged_in?
-        erb :'flights/create_tweet'
+        erb :'flights/create_flight'
       else
         redirect to '/login'
       end
@@ -19,16 +20,16 @@ class FlightController < ApplicationController
     post '/flights' do
      if logged_in?
        if params == ""
-         redirect to "/tweets/new"
+         redirect to "/flights/new"
        else
-         @flight = current_user.flights.build(params)
-         if @flight.save
+         @flight = current_user.flights.build(origin: params[:origin], destination: params[:destination], user_id: params[:user_id])
+          if @flight.save
            redirect to "/flights/#{@flight.id}"
          else
            redirect to "/flights/new"
          end
        end
-     else
+       else
        redirect to '/login'
      end
    end
@@ -46,7 +47,7 @@ class FlightController < ApplicationController
      if logged_in?
        @flight = Flight.find_by_id(params[:id])
        if @flight && @flight.user == current_user
-         erb :'flights/edit_tweet'
+         erb :'flights/edit_flight'
        else
          redirect to '/flights'
        end

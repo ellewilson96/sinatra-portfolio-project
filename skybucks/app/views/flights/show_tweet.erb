@@ -1,0 +1,8 @@
+<p><%= @flight %>
+
+<form method="post" action="/flights/<%=@flight.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Flight">
+</form>
+
+<a href="/tweets/<%=@tweet.id%>/edit">Edit Flight </a>
