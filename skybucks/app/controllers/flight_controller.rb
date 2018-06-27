@@ -24,7 +24,7 @@ class FlightController < ApplicationController
     post '/flights' do
      if logged_in?
        if params[:origin] == params[:destination]
-         redirect to "/flights/error"
+         erb :'/flights/create_flight', locals: {message: "Origin and Destination cannot be the same. Please choose another option."}
        else
          @flight = current_user.flights.build(origin: params[:origin], destination: params[:destination], user_id: params[:user_id])
           if params[:origin] != params[:destination]
@@ -42,11 +42,15 @@ class FlightController < ApplicationController
    get '/flights/:id' do
      if logged_in?
        @flight = Flight.find_by_id(params[:id])
-       erb :'flights/show_flight'
-     else
-       redirect to '/login'
-     end
+       if @flight && @flight.user == current_user
+         erb :'flights/show_flight'
+       else
+       redirect to '/flights'
+      end
+    else
+      redirect to '/login'
    end
+ end
 
    get '/flights/:id/edit' do
      if logged_in?

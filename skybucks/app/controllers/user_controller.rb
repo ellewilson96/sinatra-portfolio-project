@@ -15,7 +15,7 @@ class UserController < ApplicationController
 
  post '/signup' do
    if params[:username] == "" || params[:email] == "" || params[:password] == ""
-     redirect to '/signup'
+     erb :'/users/create_user', locals: {message: "All fields must be complete to sign up."}
    else
      @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
      @user.save
